@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import React from 'react';
 import { css, jsx } from '@emotion/react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../button';
 
 const styles = {
@@ -31,7 +31,13 @@ const styles = {
   `,
 };
 
-function CardHome({ title, description, imgUrl, ...others }) {
+function CardHome({ title, description, imgUrl, route, ...others }) {
+  const navigate = useNavigate();
+
+  const handleRoute = () => {
+    navigate(route);
+  };
+
   return (
     <div css={styles.wrapper} {...others}>
       <div css={styles.img_wrapper}>
@@ -40,7 +46,7 @@ function CardHome({ title, description, imgUrl, ...others }) {
       <div css={styles.content_wrapper}>
         <h3 className="mb-2">{title}</h3>
         <p className="regular-metadata-xs mb-3">{description}</p>
-        <Button>Try this!</Button>
+        <Button onClick={handleRoute}>Try this!</Button>
       </div>
     </div>
   );
