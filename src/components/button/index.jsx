@@ -12,6 +12,11 @@ const styles = {
     cursor: pointer;
     border: 0px;
 
+    &:disabled: {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     &:hover {
       background: black;
     }
