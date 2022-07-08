@@ -9,9 +9,18 @@ const styles = {
     padding: 16px;
     border-radius: 16px;
     background: #343a40;
-    height: calc(100vh-60px);
-    width: 240px;
+    height: max-content;
+    min-width: 240px;
     margin: 16px;
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+  `,
+  link: css`
+    display: flex;
+    padding: 16px 0px;
+    text-decoration: none;
   `,
 };
 
@@ -19,7 +28,7 @@ function NavigationBar() {
   return (
     <nav css={styles.root}>
       {MENU_LIST.map((menu) => (
-        <NavLink key={menu.title} to={menu.route}>
+        <NavLink key={menu.title} to={menu.route} css={styles.link}>
           <p>{menu.title}</p>
         </NavLink>
       ))}
