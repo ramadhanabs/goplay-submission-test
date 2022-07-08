@@ -6,10 +6,11 @@ import NavigationBar from '../navigation-bar';
 const styles = {
   root: css`
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
   `,
   child_wrapper: css`
-    margin: 16px;
+    padding: 16px;
+    flex-grow: 1;
   `,
 };
 
