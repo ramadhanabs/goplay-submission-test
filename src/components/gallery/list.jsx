@@ -40,8 +40,9 @@ function ListView({ data }) {
               <div css={styles.img_list_wrapper}>
                 <img
                   css={styles.img}
-                  src={img.download_url}
+                  src={img.url}
                   alt={`picture2-${img.author}`}
+                  loading="lazy"
                 />
               </div>
               <p className="bold-body pl-2">{img.author}</p>
