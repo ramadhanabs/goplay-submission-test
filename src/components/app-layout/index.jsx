@@ -7,6 +7,7 @@ const styles = {
   root: css`
     display: flex;
     min-height: 100vh;
+    padding: 40px 80px;
   `,
   child_wrapper: css`
     padding: 16px;
