@@ -7,6 +7,12 @@ import Button from '../../components/button';
 import ColorBox from '../../components/button/color-box';
 
 const styles = {
+  wrapper: css`
+    padding: 16px;
+    border-radius: 16px;
+    background: #343a40;
+    color: white;
+  `,
   control_bar: css`
     display: flex;
     justify-content: space-between;
@@ -59,7 +65,7 @@ function SimpleColorPickerApp() {
 
   return (
     <div className="row">
-      <div className="col-6">
+      <div className="col-6 m-2" css={styles.wrapper}>
         <div className="mb-3" css={styles.control_bar}>
           <Button onClick={handlePrevCollection}>Previous</Button>
           <p className="bold-heading-6">Collection {selectedCollection}</p>
@@ -76,7 +82,7 @@ function SimpleColorPickerApp() {
             ))}
         </div>
       </div>
-      <div className="col-6">
+      <div className="col-6 m-2" css={styles.wrapper}>
         <h3>Selected color:</h3>
         <p>{selectedColor}</p>
       </div>
