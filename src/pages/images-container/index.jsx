@@ -17,12 +17,7 @@ const styles = {
 function ImagesContainer() {
   return (
     <AppLayout>
-      <div className="mb-3" css={styles.wrapper}>
-        <h3>Images Container</h3>
-      </div>
-      <div css={styles.wrapper}>
-        <ImagesContainerApp />
-      </div>
+      <ImagesContainerApp />
     </AppLayout>
   );
 }
