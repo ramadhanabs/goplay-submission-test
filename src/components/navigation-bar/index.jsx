@@ -3,6 +3,7 @@
 import { css, jsx } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 import { MENU_LIST } from '../../constants/menu';
+import logo from '../../assets/images/logo-goplay.webp';
 
 const styles = {
   root: css`
@@ -22,14 +23,36 @@ const styles = {
     padding: 16px;
     text-decoration: none;
   `,
+  header: css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `,
+  logo_wrapper: css`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  `,
+  logo: css`
+    object-fit: cover;
+    object-position: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  `,
 };
 
 function NavigationBar() {
   return (
     <nav css={styles.root}>
-      <p className="bold-heading-3 mb-4" style={{ textAlign: 'center' }}>
-        Goplay Test
-      </p>
+      <div css={styles.header} className="mb-4">
+        <div css={styles.logo_wrapper}>
+          <img src={logo} alt="logo-goplay" css={styles.logo} />
+        </div>
+        <p className="bold-heading-3 ml-2" style={{ textAlign: 'center' }}>
+          Goplay Test
+        </p>
+      </div>
       {MENU_LIST.map((menu) => (
         <NavLink
           key={menu.title}
