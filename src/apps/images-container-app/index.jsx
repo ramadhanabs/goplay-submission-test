@@ -3,39 +3,20 @@
 import { css, jsx } from '@emotion/react';
 import { useState, useEffect } from 'react';
 import Button from '../../components/button';
+import IconButton from '../../components/button/icon';
+import GridIcon from '../../assets/icons/grid.svg';
+import ListIcon from '../../assets/icons/list.svg';
+import GridView from '../../components/gallery/grid';
+import ListView from '../../components/gallery/list';
+import Loading from '../../components/loading';
 
 const url = 'https://picsum.photos/v2/list';
 
 const styles = {
-  img_wrapper: css`
-    margin: 8px;
-    aspect-ratio: 1/1;
-    border-radius: 4px;
-    overflow: hidden;
-  `,
-  img: css`
-    object-fit: cover;
-    object-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    aspect-ratio: 1/1;
-  `,
-  img_list_wrapper: css`
-    height: 50px;
-    width: 50px;
-    border-radius: 4px;
-    overflow: hidden;
-  `,
-  column_list: css`
+  header_wrapper: css`
     display: flex;
-    align-items: center;
-    padding: 8px;
     justify-content: space-between;
-    border-radius: 4px;
-
-    &:nth-child(odd) {
-      background: black;
-    }
+    align-items: center;
   `,
 };
 
@@ -46,6 +27,12 @@ function ImagesContainerApp() {
     limit: 10,
   });
   const [isLoading, setLoading] = useState(false);
+  const [displayMode, setDisplayMode] = useState('');
+
+  const handleChangeMode = ({ currentTarget }) => {
+    const { name } = currentTarget;
+    setDisplayMode(name);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +43,7 @@ function ImagesContainerApp() {
         );
         const response = await res.json();
         setData(response);
+        setDisplayMode('grid');
       } catch (err) {
         console.log(err);
       } finally {
@@ -65,41 +53,36 @@ function ImagesContainerApp() {
 
     fetchData();
   }, [query]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
-      <h3 className="m-2">Grid View</h3>
-      <div className="row" style={{ flexWrap: 'wrap' }}>
-        {data.length > 0 &&
-          data.map((img) => (
-            <div className="col">
-              <div css={styles.img_wrapper}>
-                <img
-                  css={styles.img}
-                  src={img.download_url}
-                  alt={`picture-${img.author}`}
-                />
-              </div>
-            </div>
-          ))}
+      <div css={styles.header_wrapper} className="m-2">
+        <h3>{displayMode.toUpperCase()} View</h3>
+        <div className="row">
+          <IconButton
+            name="grid"
+            icon={GridIcon}
+            className="mr-1"
+            isActive={displayMode === 'grid'}
+            onClick={handleChangeMode}
+          />
+          <IconButton
+            name="list"
+            icon={ListIcon}
+            isActive={displayMode === 'list'}
+            onClick={handleChangeMode}
+          />
+        </div>
       </div>
 
-      <h3 className="m-2">List View</h3>
-      {data.length > 0 &&
-        data.map((img) => (
-          <div css={styles.column_list}>
-            <div className="row" style={{ alignItems: 'center' }}>
-              <div css={styles.img_list_wrapper}>
-                <img
-                  css={styles.img}
-                  src={img.download_url}
-                  alt={`picture2-${img.author}`}
-                />
-              </div>
-              <p className="bold-body pl-2">{img.author}</p>
-            </div>
-            <Button>Original Image</Button>
-          </div>
-        ))}
+      {displayMode === 'grid' ? (
+        <GridView data={data} />
+      ) : (
+        <ListView data={data} />
+      )}
     </div>
   );
 }
