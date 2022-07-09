@@ -20,7 +20,7 @@ function SimpleColorPicker() {
       <div className="mb-3" css={styles.wrapper}>
         <h3>Simple Color Picker</h3>
       </div>
-      <div css={styles.wrapper}>
+      <div>
         <SimpleColorPickerApp />
       </div>
     </AppLayout>
