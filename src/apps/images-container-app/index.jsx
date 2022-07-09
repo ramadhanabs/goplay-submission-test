@@ -2,13 +2,15 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import { useState, useEffect } from 'react';
-import Button from '../../components/button';
 import IconButton from '../../components/button/icon';
 import GridIcon from '../../assets/icons/grid.svg';
 import ListIcon from '../../assets/icons/list.svg';
+import ArrowLeft from '../../assets/icons/arrow-left.svg';
+import ArrowRight from '../../assets/icons/arrow-right.svg';
 import GridView from '../../components/gallery/grid';
 import ListView from '../../components/gallery/list';
 import Loading from '../../components/loading';
+import { getUnsplashSource } from '../../lib/linkGenerator';
 
 const url = 'https://picsum.photos/v2/list';
 
@@ -34,6 +36,21 @@ function ImagesContainerApp() {
     setDisplayMode(name);
   };
 
+  const handlePagination = ({ currentTarget }) => {
+    if (currentTarget.name === 'prev') {
+      if (query.page === 1) return;
+      setQuery((prev) => ({
+        ...prev,
+        page: prev.page - 1,
+      }));
+    } else {
+      setQuery((prev) => ({
+        ...prev,
+        page: prev.page + 1,
+      }));
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,7 +59,11 @@ function ImagesContainerApp() {
           `${url}?page=${query.page}&limit=${query.limit}`
         );
         const response = await res.json();
-        setData(response);
+        const newArray = response.map((img) => ({
+          ...img,
+          url: getUnsplashSource(img.url),
+        }));
+        setData(newArray);
         setDisplayMode('grid');
       } catch (err) {
         console.log(err);
@@ -60,7 +81,7 @@ function ImagesContainerApp() {
   return (
     <div>
       <div css={styles.header_wrapper} className="m-2">
-        <h3>{displayMode.toUpperCase()} View</h3>
+        <h3>Images Container</h3>
         <div className="row">
           <IconButton
             name="grid"
@@ -83,6 +104,20 @@ function ImagesContainerApp() {
       ) : (
         <ListView data={data} />
       )}
+
+      <div
+        className="row my-3"
+        style={{ alignItems: 'center', justifyContent: 'center' }}
+      >
+        <IconButton
+          name="prev"
+          icon={ArrowLeft}
+          className="mr-1"
+          onClick={handlePagination}
+        />
+        <p className="bold-body mx-3">Page {query.page}</p>
+        <IconButton name="next" icon={ArrowRight} onClick={handlePagination} />
+      </div>
     </div>
   );
 }
