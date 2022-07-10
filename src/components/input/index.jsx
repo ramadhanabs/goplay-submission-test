@@ -24,10 +24,13 @@ const styles = {
       margin: 0;
     }
   `,
+  block: css`
+    width: 100%;
+  `,
 };
 
-function Input({ ...others }) {
-  return <input css={styles.root} {...others} />;
+function Input({ block, ...others }) {
+  return <input css={[styles.root, block && styles.block]} {...others} />;
 }
 
 export default Input;
