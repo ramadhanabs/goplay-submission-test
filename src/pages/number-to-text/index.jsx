@@ -6,7 +6,7 @@ import NumberToTextApp from '../../apps/number-to-text-app';
 
 const styles = {
   wrapper: css`
-    padding: 16px;
+    padding: 24px;
     border-radius: 16px;
     background: #343a40;
     width: auto;
@@ -17,8 +17,8 @@ const styles = {
 function NumberToText() {
   return (
     <AppLayout>
-      <div className="mb-3" css={styles.wrapper}>
-        <h3>Number To Text</h3>
+      <div className="mb-3">
+        <h2>Number To Text</h2>
       </div>
       <div css={styles.wrapper}>
         <NumberToTextApp />
