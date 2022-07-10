@@ -5,7 +5,7 @@ import { css, jsx } from '@emotion/react';
 const styles = {
   root: css`
     width: 100%;
-    height: 30px;
+    height: 50px;
     border-radius: 4px;
     margin: 4px;
     cursor: pointer;
