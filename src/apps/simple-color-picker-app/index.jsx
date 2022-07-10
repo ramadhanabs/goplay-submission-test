@@ -3,8 +3,12 @@
 import { css, jsx } from '@emotion/react';
 import { useState, useEffect } from 'react';
 import { generateArrayofColor } from '../../lib/colorGenerator';
-import Button from '../../components/button';
+import IconButton from '../../components/button/icon';
 import ColorBox from '../../components/button/color-box';
+import ArrowLeft from '../../assets/icons/arrow-left.svg';
+import ArrowRight from '../../assets/icons/arrow-right.svg';
+import CopyIcon from '../../assets/icons/copy.svg';
+import PaginationDots from '../../components/pagination-dots';
 
 const styles = {
   wrapper: css`
@@ -17,10 +21,9 @@ const styles = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 16px;
   `,
   color_wrapper: css`
-    padding: 16px;
+    padding: 16px 0px;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 10px;
@@ -33,12 +36,23 @@ const styles = {
     cursor: pointer;
     border: none;
   `,
+  hex_wrapper: css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 4px;
+    background: #343a40;
+    color: white;
+    width: 300px;
+  `,
 };
 
 function SimpleColorPickerApp() {
   const [data, setData] = useState([]);
   const [selectedColor, setColor] = useState(null);
   const [selectedCollection, setCollection] = useState(1);
+  const [isShowAlert, setShowAlert] = useState(false);
 
   const handleClickColor = (val) => {
     setColor(val);
@@ -54,6 +68,18 @@ function SimpleColorPickerApp() {
     setCollection(selectedCollection - 1);
   };
 
+  const showAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 1000);
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(selectedColor);
+    showAlert();
+  };
+
   useEffect(() => {
     const generateColor = () => {
       const arrayOfColor = generateArrayofColor();
@@ -64,27 +90,38 @@ function SimpleColorPickerApp() {
   }, []);
 
   return (
-    <div className="row">
-      <div className="col-6 m-2" css={styles.wrapper}>
-        <div className="mb-3" css={styles.control_bar}>
-          <Button onClick={handlePrevCollection}>Previous</Button>
-          <p className="bold-heading-6">Collection {selectedCollection}</p>
-          <Button onClick={handleNextCollection}>Next</Button>
-        </div>
-        <div css={styles.color_wrapper}>
-          {Object.keys(data).length > 0 &&
-            data[`collection_${selectedCollection}`].map((color) => (
-              <ColorBox
-                isActive={color === selectedColor}
-                color={color}
-                onClick={() => handleClickColor(color)}
-              />
-            ))}
+    <div>
+      <div css={styles.wrapper}>
+        <div css={styles.control_bar}>
+          <IconButton onClick={handlePrevCollection} icon={ArrowLeft} />
+          <h3 style={{ textAlign: 'center' }}>
+            Collection {selectedCollection}
+          </h3>
+          <IconButton onClick={handleNextCollection} icon={ArrowRight} />
         </div>
       </div>
-      <div className="col-6 m-2" css={styles.wrapper}>
-        <h3>Selected color:</h3>
-        <p>{selectedColor}</p>
+      <div className="mb-3" css={styles.color_wrapper}>
+        {Object.keys(data).length > 0 &&
+          data[`collection_${selectedCollection}`].map((color) => (
+            <ColorBox
+              isActive={color === selectedColor}
+              color={color}
+              onClick={() => handleClickColor(color)}
+            />
+          ))}
+      </div>
+      <PaginationDots count={Object.keys(data)} isActive={selectedCollection} />
+      <div>
+        <p className="regular-heading-3 mb-3">Hex Color</p>
+        <div css={styles.hex_wrapper} className="mb-2">
+          <p className="bold-body">{selectedColor || '--'}</p>
+          <IconButton icon={CopyIcon} onClick={handleCopy} />
+        </div>
+        {isShowAlert && (
+          <p className="regular-metadata success-100--text">
+            Success copy value!
+          </p>
+        )}
       </div>
     </div>
   );
