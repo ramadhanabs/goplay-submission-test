@@ -39,6 +39,9 @@ const styles = {
 };
 
 function GridView({ data }) {
+  const handleOpenLink = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
   return (
     <div className="row" style={{ flexWrap: 'wrap' }}>
       {data.length > 0 &&
@@ -62,7 +65,8 @@ function GridView({ data }) {
                 <a
                   css={styles.button}
                   className="regular-metadata"
-                  href={img.url}
+                  href="#"
+                  onClick={() => handleOpenLink(img.url)}
                 >
                   Original Image
                   <img
