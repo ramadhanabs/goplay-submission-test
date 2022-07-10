@@ -2,6 +2,8 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import Button from '../button';
+import IconButton from '../button/icon';
+import ArrowRight from '../../assets/icons/arrow-right.svg';
 
 const styles = {
   img: css`
@@ -22,17 +24,22 @@ const styles = {
     align-items: center;
     padding: 8px;
     justify-content: space-between;
-    border-radius: 4px;
+    border-radius: 8px;
+    background: #2b3238;
+    margin: 8px 0px;
 
     &:nth-child(odd) {
-      background: black;
+      background: #343a40;
     }
   `,
 };
 
 function ListView({ data }) {
+  const handleOpenLink = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
   return (
-    <div>
+    <div className="my-4">
       {data.length > 0 &&
         data.map((img) => (
           <div css={styles.column_list}>
@@ -47,7 +54,10 @@ function ListView({ data }) {
               </div>
               <p className="bold-body pl-2">{img.author}</p>
             </div>
-            <Button>Original Image</Button>
+            <IconButton
+              icon={ArrowRight}
+              onClick={() => handleOpenLink(img.url)}
+            />
           </div>
         ))}
     </div>
