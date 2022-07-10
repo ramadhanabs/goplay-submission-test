@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import IconButton from '../../components/button/icon';
 import GridIcon from '../../assets/icons/grid.svg';
 import ListIcon from '../../assets/icons/list.svg';
@@ -11,6 +11,7 @@ import GridView from '../../components/gallery/grid';
 import ListView from '../../components/gallery/list';
 import Loading from '../../components/loading';
 import { getUnsplashSource } from '../../lib/linkGenerator';
+import { DisplayContext } from '../../lib/context/display-context';
 
 const url = 'https://picsum.photos/v2/list';
 
@@ -23,18 +24,13 @@ const styles = {
 };
 
 function ImagesContainerApp() {
+  const { displayMode, handleChangeMode } = useContext(DisplayContext);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState({
     page: 1,
     limit: 10,
   });
   const [isLoading, setLoading] = useState(false);
-  const [displayMode, setDisplayMode] = useState('');
-
-  const handleChangeMode = ({ currentTarget }) => {
-    const { name } = currentTarget;
-    setDisplayMode(name);
-  };
 
   const handlePagination = ({ currentTarget }) => {
     if (currentTarget.name === 'prev') {
@@ -81,7 +77,7 @@ function ImagesContainerApp() {
   return (
     <div>
       <div css={styles.header_wrapper} className="m-2">
-        <h3>Images Container</h3>
+        <h2>Images Container</h2>
         <div className="row">
           <IconButton
             name="grid"
