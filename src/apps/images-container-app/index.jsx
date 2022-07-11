@@ -60,7 +60,6 @@ function ImagesContainerApp() {
           url: getUnsplashSource(img.url),
         }));
         setData(newArray);
-        setDisplayMode('grid');
       } catch (err) {
         console.log(err);
       } finally {
