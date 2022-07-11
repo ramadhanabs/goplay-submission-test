@@ -13,6 +13,10 @@ const styles = {
     margin: 8px;
     aspect-ratio: 1/1;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('/src/assets/images/placeholder.webp');
   `,
   img: css`
     object-fit: cover;
