@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import ArrowRight from '../../../assets/icons/arrow-right.svg';
+import PlaceholderImg from '../../../assets/images/placeholder.webp';
 
 const styles = {
   detail_wrapper: css`
@@ -16,7 +17,7 @@ const styles = {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url('/src/assets/images/placeholder.webp');
+    background-image: url(${PlaceholderImg});
   `,
   img: css`
     object-fit: cover;
