@@ -8,6 +8,15 @@ A web-based application for Goplay test purpose. This application has 3 main fea
 - Eslint [v8.19.0](https://eslint.org/)
 
 ## Scripts available
+
+### Install package
+
+Install all package in package.json file. Make sure you run this after cloning this repo, right before running development server.
+
+```bash
+npm install
+```
+
 ### Run development server
 
 Run the script below to start the development server and open [`http://localhost:3000`](http://localhost:3000) (default port)
@@ -15,4 +24,14 @@ Run the script below to start the development server and open [`http://localhost
 ```bash
 npm run dev
 ```
+
+### Run unit tests
+
+Run the script below to execute all unit tests.
+
+```bash
+npm run test
+```
+
+
 
