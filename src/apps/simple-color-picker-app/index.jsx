@@ -11,6 +11,9 @@ import CopyIcon from '../../assets/icons/copy.svg';
 import PaginationDots from '../../components/pagination-dots';
 
 const styles = {
+  base: css`
+    height: calc(100% + 60px);
+  `,
   wrapper: css`
     padding: 16px;
     border-radius: 16px;
@@ -90,7 +93,8 @@ function SimpleColorPickerApp() {
   }, []);
 
   return (
-    <div>
+    <div css={styles.base}>
+      <h2 className="my-3">Simple Color Picker</h2>
       <div css={styles.wrapper}>
         <div css={styles.control_bar}>
           <IconButton onClick={handlePrevCollection} icon={ArrowLeft} />
@@ -111,7 +115,7 @@ function SimpleColorPickerApp() {
           ))}
       </div>
       <PaginationDots count={Object.keys(data)} isActive={selectedCollection} />
-      <div>
+      <div className="my-3">
         <p className="regular-heading-3 mb-3">Hex Color</p>
         <div css={styles.hex_wrapper} className="mb-2">
           <p className="bold-body">{selectedColor || '--'}</p>

@@ -21,6 +21,9 @@ const styles = {
     justify-content: space-between;
     align-items: center;
   `,
+  wrapper: css`
+    height: calc(100% + 60px);
+  `,
 };
 
 function ImagesContainerApp() {
@@ -74,7 +77,7 @@ function ImagesContainerApp() {
     return <Loading />;
   }
   return (
-    <div>
+    <div css={styles.wrapper}>
       <div css={styles.header_wrapper} className="m-2">
         <h2>Images Container</h2>
         <div className="row">
