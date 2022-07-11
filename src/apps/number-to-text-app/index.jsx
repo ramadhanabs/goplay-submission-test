@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { numberToText } from '../../lib/numberToText';
+import { numberToText } from '../../lib/helper/numberToText';
 import Input from '../../components/input';
 
 function NumberToTextApp() {

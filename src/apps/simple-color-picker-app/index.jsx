@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
 import { useState, useEffect } from 'react';
-import { generateArrayofColor } from '../../lib/colorGenerator';
+import { generateArrayofColor } from '../../lib/helper/colorGenerator';
 import IconButton from '../../components/button/icon';
 import ColorBox from '../../components/button/color-box';
 import ArrowLeft from '../../assets/icons/arrow-left.svg';

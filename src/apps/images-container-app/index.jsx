@@ -10,7 +10,7 @@ import ArrowRight from '../../assets/icons/arrow-right.svg';
 import GridView from '../../components/gallery/grid';
 import ListView from '../../components/gallery/list';
 import Loading from '../../components/loading';
-import { getUnsplashSource } from '../../lib/linkGenerator';
+import { getUnsplashSource } from '../../lib/helper/linkGenerator';
 import { DisplayContext } from '../../lib/context/display-context';
 
 const url = 'https://picsum.photos/v2/list';
