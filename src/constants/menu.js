@@ -1,4 +1,8 @@
 /* eslint-disable import/prefer-default-export */
+import ColorPicker from '../assets/icons/color-picker.svg';
+import Calculator from '../assets/icons/calculator.svg';
+import Image from '../assets/icons/image.svg';
+
 export const MENU_LIST = [
   {
     title: 'Simple Color Picker',
@@ -7,6 +11,7 @@ export const MENU_LIST = [
     imgUrl:
       'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80',
     route: '/simple-color-picker',
+    icon: ColorPicker,
   },
   {
     title: 'Images Container',
@@ -15,6 +20,7 @@ export const MENU_LIST = [
     imgUrl:
       'https://images.unsplash.com/photo-1562619371-b67725b6fde2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     route: '/images-container',
+    icon: Image,
   },
   {
     title: 'Number to Text Converter',
@@ -23,5 +29,6 @@ export const MENU_LIST = [
     imgUrl:
       'https://images.unsplash.com/photo-1552688468-d87e6f7a58f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     route: '/number-to-text',
+    icon: Calculator,
   },
 ];

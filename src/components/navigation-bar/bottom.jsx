@@ -3,9 +3,7 @@
 import { css, jsx } from '@emotion/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import IconButton from '../button/icon';
-import ColorPicker from '../../assets/icons/color-picker.svg';
-import Calculator from '../../assets/icons/calculator.svg';
-import Image from '../../assets/icons/image.svg';
+import { MENU_LIST } from '../../constants/menu';
 
 const styles = {
   wrapper: css`
@@ -29,21 +27,6 @@ const styles = {
   `,
 };
 
-const menus = [
-  {
-    icon: ColorPicker,
-    route: '/simple-color-picker',
-  },
-  {
-    icon: Image,
-    route: '/images-container',
-  },
-  {
-    icon: Calculator,
-    route: '/number-to-text',
-  },
-];
-
 function BottomNavigationBar() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -51,7 +34,7 @@ function BottomNavigationBar() {
   return (
     <div css={styles.wrapper}>
       <div css={styles.root}>
-        {menus.map(({ icon, route }) => (
+        {MENU_LIST.map(({ icon, route }) => (
           <IconButton
             icon={icon}
             onClick={() => navigate(route)}
