@@ -12,7 +12,9 @@ import PaginationDots from '../../components/pagination-dots';
 
 const styles = {
   base: css`
-    height: calc(100% + 60px);
+    @media (max-width: 576px) {
+      height: calc(100% + 60px);
+    }
   `,
   wrapper: css`
     padding: 16px;

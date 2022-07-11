@@ -22,7 +22,9 @@ const styles = {
     align-items: center;
   `,
   wrapper: css`
-    height: calc(100% + 60px);
+    @media (max-width: 576px) {
+      height: calc(100% + 60px);
+    }
   `,
 };
 
