@@ -41,12 +41,21 @@ function CardHome({ title, description, imgUrl, route, ...others }) {
   return (
     <div css={styles.wrapper} {...others}>
       <div css={styles.img_wrapper}>
-        <img css={styles.img} src={imgUrl} alt="test-1" />
+        <img
+          css={styles.img}
+          src={imgUrl}
+          alt="test-1"
+          data-testid="cardHomeBanner"
+        />
       </div>
       <div css={styles.content_wrapper}>
-        <h3 className="mb-2">{title}</h3>
+        <h3 className="mb-2" data-testid="cardTitle">
+          {title}
+        </h3>
         <p className="regular-metadata-xs mb-3">{description}</p>
-        <Button onClick={handleRoute}>Try this!</Button>
+        <Button onClick={handleRoute} data-testid="cardButtonNavigate">
+          Try this!
+        </Button>
       </div>
     </div>
   );
