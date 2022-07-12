@@ -1,6 +1,12 @@
 /* eslint-disable import/prefer-default-export */
-export const generateArrayofColor = () => {
-  /* Generate random any random color in hex format */
+
+/* Generate random any random color in hex format */
+
+/* Generating 512 color in array */
+export const arrayOfColor = (count) => {
+  const tempArr = [];
+  let i = 0;
+
   const colorGenerator = () => {
     const maxVal = 0xffffff;
 
@@ -12,30 +18,29 @@ export const generateArrayofColor = () => {
     return `#${randColor.toUpperCase()}`;
   };
 
-  /* Generating 512 color in array */
-  const arrayOfColor = () => {
-    const tempArr = [];
-    for (let i = 0; i < 512; i++) {
-      tempArr.push(colorGenerator());
-    }
+  while (i < count) {
+    tempArr.push(colorGenerator());
+    i += 1;
+  }
 
-    return tempArr;
-  };
+  return tempArr;
+};
 
-  /* Transform array of 512 color into obj with desired chunk size */
-  const colorCollectionGenerator = (array, chunkCount) => {
-    const obj = {};
-    let anchor = 1;
-    for (let i = 0; i < array.length; i += chunkCount) {
-      const chunk = array.slice(i, i + chunkCount);
-      obj[`collection_${anchor}`] = chunk;
-      anchor++;
-    }
-    return obj;
-  };
+/* Transform array of 512 color into obj with desired chunk size */
+export const arrayToCollection = (array, chunkCount) => {
+  const obj = {};
+  let anchor = 1;
+  for (let i = 0; i < array.length; i += chunkCount) {
+    const chunk = array.slice(i, i + chunkCount);
+    obj[`collection_${anchor}`] = chunk;
+    anchor += 1;
+  }
+  return obj;
+};
 
-  const colorList = arrayOfColor();
+export const generateArrayofColor = () => {
+  const colorList = arrayOfColor(512);
   const chunkCount = 64;
 
-  return colorCollectionGenerator(colorList, chunkCount);
+  return arrayToCollection(colorList, chunkCount);
 };
