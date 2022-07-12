@@ -89,12 +89,14 @@ function ImagesContainerApp() {
             className="mr-1"
             isActive={displayMode === 'grid'}
             onClick={handleChangeMode}
+            data-testid="gridButton"
           />
           <IconButton
             name="list"
             icon={ListIcon}
             isActive={displayMode === 'list'}
             onClick={handleChangeMode}
+            data-testid="listButton"
           />
         </div>
       </div>
