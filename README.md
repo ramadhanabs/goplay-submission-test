@@ -9,12 +9,20 @@ A web-based application for Goplay test purpose. This application has 3 main fea
 
 ## Scripts available
 
+### Clone the repo
+
+Clone this repo by using command line below in your terminal.
+
+```bash
+npm install
+```
+
 ### Install package
 
 Install all package in package.json file. Make sure you run this after cloning this repo, right before running development server.
 
 ```bash
-npm install
+git clone https://github.com/ramadhanabs/goplay-submission-test.git
 ```
 
 ### Run development server
