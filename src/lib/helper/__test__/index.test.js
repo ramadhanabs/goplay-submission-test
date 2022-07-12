@@ -5,6 +5,7 @@ import {
   generateArrayofColor,
 } from '../colorGenerator';
 import { numberToText } from '../numberToText';
+import { getUnsplashSource } from '../linkGenerator';
 
 describe('Color generator function test', () => {
   const array = ['a', 'b', 'c', 'd', 'e', 'f'];
@@ -33,5 +34,14 @@ describe('Number to text function test', () => {
   });
   it('should return converted number to words', () => {
     expect(numberToText(1000)).toBe('one thousand');
+  });
+});
+
+describe('Link generator function test', () => {
+  const url = 'https://unsplash.com/photos/yC-Yzbqy7PY';
+  const expected = 'https://source.unsplash.com/yC-Yzbqy7PY/500x500';
+
+  it('should return converted unsplash url', () => {
+    expect(getUnsplashSource(url)).toBe(expected);
   });
 });
