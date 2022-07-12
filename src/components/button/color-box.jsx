@@ -38,6 +38,7 @@ function ColorBox({ isActive, color, ...others }) {
         ${isActive && styles.active}
       `}
       style={{ background: color }}
+      data-testid="buttonColorBox"
       {...others}
     />
   );

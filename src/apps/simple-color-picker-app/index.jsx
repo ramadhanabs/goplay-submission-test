@@ -121,7 +121,9 @@ function SimpleColorPickerApp() {
       <div className="my-3">
         <p className="regular-heading-3 mb-3">Hex Color</p>
         <div css={styles.hex_wrapper} className="mb-2">
-          <p className="bold-body">{selectedColor || '--'}</p>
+          <p className="bold-body" data-testid="selectedColorField">
+            {selectedColor || '--'}
+          </p>
           <IconButton icon={CopyIcon} onClick={handleCopy} />
         </div>
         {isShowAlert && (
