@@ -24,8 +24,11 @@ const styles = {
 function PaginationDots({ isActive, count }) {
   return (
     <div css={styles.wrapper}>
-      {count.map((o, index) => (
-        <div css={[styles.root, isActive === index + 1 && styles.active]} />
+      {count.map((dot, index) => (
+        <div
+          key={dot}
+          css={[styles.root, isActive === index + 1 && styles.active]}
+        />
       ))}
     </div>
   );

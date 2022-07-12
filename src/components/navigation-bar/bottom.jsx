@@ -36,6 +36,7 @@ function BottomNavigationBar() {
       <div css={styles.root}>
         {MENU_LIST.map(({ icon, route }) => (
           <IconButton
+            key={route}
             icon={icon}
             onClick={() => navigate(route)}
             isActive={pathname === route}
