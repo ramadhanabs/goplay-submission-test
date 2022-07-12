@@ -18,7 +18,7 @@ const styles = {
 
 function Loading() {
   return (
-    <div css={styles.root}>
+    <div css={styles.root} data-testid="loadingComponent">
       <img src={LoadingGIF} css={styles.img} alt="" />
       <h3 className="ml-2">Loading</h3>
     </div>
