@@ -4,7 +4,7 @@ A web-based application for Goplay test purpose. This application has 3 main fea
 ## Development Environment
 - React [v18.0.0](https://reactjs.org/docs/getting-started.html)
 - Vite [v2.9.9](https://vitejs.dev/)
-- Jest [v28.1.2](https://jestjs.io/)
+- Vitest [v0.18.0](https://vitest.dev/)
 - Eslint [v8.19.0](https://eslint.org/)
 
 ## Scripts available
