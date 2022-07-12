@@ -26,6 +26,7 @@ function NumberToTextApp() {
           <div className="mb-4">
             <p className="regular-metadata mb-2">Number:</p>
             <Input
+              data-testid="inputField"
               type="number"
               placeholder="Input your number"
               onChange={handleInput}
@@ -45,7 +46,9 @@ function NumberToTextApp() {
         </div>
         <div className="col-6">
           <p className="regular-metadata mb-2">Converted Text:</p>
-          <p className="bold-body">{text || '--'}</p>
+          <p className="bold-body" data-testid="convertedTextField">
+            {text || '--'}
+          </p>
         </div>
       </div>
     </div>
