@@ -39,7 +39,7 @@ function CardHome({ title, description, imgUrl, route, ...others }) {
   };
 
   return (
-    <div css={styles.wrapper} {...others}>
+    <div css={styles.wrapper} {...others} data-testid="cardHome">
       <div css={styles.img_wrapper}>
         <img
           css={styles.img}

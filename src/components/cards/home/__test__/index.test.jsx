@@ -38,8 +38,8 @@ describe('Card component on home page', () => {
   it('Should call useNavigate with defined route to page when button clicked', () => {
     const { getByTestId } = renderContainer();
 
-    const button = getByTestId('cardButtonNavigate');
-    fireEvent.click(button);
+    const cardButtonNavigate = getByTestId('cardButtonNavigate');
+    fireEvent.click(cardButtonNavigate);
 
     expect(useNavigateMock).toBeCalledWith(MOCK_PROPS.route);
   });
