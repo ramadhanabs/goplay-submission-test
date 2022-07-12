@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+import { memo } from 'react';
 import { css, jsx } from '@emotion/react';
 
 const styles = {
@@ -42,4 +43,4 @@ function ColorBox({ isActive, color, ...others }) {
   );
 }
 
-export default ColorBox;
+export default memo(ColorBox);

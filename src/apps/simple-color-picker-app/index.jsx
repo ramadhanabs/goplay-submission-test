@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { generateArrayofColor } from '../../lib/helper/colorGenerator';
 import IconButton from '../../components/button/icon';
 import ColorBox from '../../components/button/color-box';
@@ -59,9 +59,9 @@ function SimpleColorPickerApp() {
   const [selectedCollection, setCollection] = useState(1);
   const [isShowAlert, setShowAlert] = useState(false);
 
-  const handleClickColor = (val) => {
+  const handleClickColor = useCallback((val) => {
     setColor(val);
-  };
+  }, []);
 
   const handleNextCollection = () => {
     if (selectedCollection === 8) return;
@@ -110,6 +110,7 @@ function SimpleColorPickerApp() {
         {Object.keys(data).length > 0 &&
           data[`collection_${selectedCollection}`].map((color) => (
             <ColorBox
+              key={color}
               isActive={color === selectedColor}
               color={color}
               onClick={() => handleClickColor(color)}
