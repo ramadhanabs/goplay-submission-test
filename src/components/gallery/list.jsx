@@ -39,10 +39,10 @@ function ListView({ data }) {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
   return (
-    <div className="my-4">
+    <div className="my-4" data-testid="listView">
       {data.length > 0 &&
         data.map((img) => (
-          <div css={styles.column_list}>
+          <div css={styles.column_list} key={img.id} data-testid="listImage">
             <div className="row" style={{ alignItems: 'center' }}>
               <div css={styles.img_list_wrapper}>
                 <img
